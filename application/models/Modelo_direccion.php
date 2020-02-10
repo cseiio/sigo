@@ -300,6 +300,12 @@ class Modelo_direccion extends CI_Model {
 			return $consulta -> result();
 	}
 
+	function getAllEntradasInternas_v2($area_trabajo)
+	{
+			
+			return $this->db->query("select *,e.id_recepcion_int,count(*) as cuantos, GROUP_CONCAT(direcciones.nombre_direccion) direccion_donde_se_dirige,(select GROUP_CONCAT(nombre_area) from departamentos inner join turnado_copias_deptos on departamentos.id_area= turnado_copias_deptos.id_depto_destino inner join emision_interna on turnado_copias_deptos.id_oficio_emitido = emision_interna.id_recepcion_int where turnado_copias_deptos.id_oficio_emitido=e.id_recepcion_int) copias_a_departamentos,(select GROUP_CONCAT(nombre_direccion) from direcciones inner join turnado_copias_dir on direcciones.id_direccion= turnado_copias_dir.id_direccion_destino  where turnado_copias_dir.id_oficio_emitido=e.id_recepcion_int) copias_a_direcciones from emision_interna e inner join direcciones on e.direccion_destino = direcciones.id_direccion where e.area_trabajo='".$area_trabajo."' group by num_oficio having cuantos>0 order by e.id_recepcion_int desc")->result();
+	}
+
 	function getBuzonDeOficiosEntrantes($id_direccion)
 	{
 		$this->db->select('*');

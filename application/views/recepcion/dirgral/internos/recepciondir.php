@@ -1,4 +1,4 @@
-              <script>
+<script>
             // DIRECCION DE PLANEACIÓN
             $(function() {
               habilitarplan();
@@ -414,11 +414,12 @@
                              
                              <td><?php //echo 'Es informativo' 
                              $is_informativo='si'; 
-                                  $this -> load -> model('Modelo_direccion');
+                                 /* $this -> load -> model('Modelo_direccion');
                                        $query = $this->Modelo_direccion->getAllInformativosByNumOficio($row->num_oficio);
                                        foreach ($query as $key) {
                                            echo $key->nombre_direccion.',';
-                                       }
+                                       }*/
+                                      echo $row->direccion_donde_se_dirige;
                                 ?></td>
                                
                                 <?php } 
@@ -428,11 +429,12 @@
 
                                     <td>
                                       <?php 
-                                      $this -> load -> model('Modelo_direccion');
+                                     /* $this -> load -> model('Modelo_direccion');
                                       $query = $this->Modelo_direccion->getAllsByNumOficio($row->num_oficio);
                                       foreach ($query as $key) {
                                        echo $key->nombre_direccion.',';
-                                     }
+                                     }*/
+                                     echo $row->direccion_donde_se_dirige;
                                      ?>
 
                                    </td>
@@ -557,23 +559,25 @@
                          
                           <td>
                             <button type="button" onclick="EditarOficio('<?php echo $row->id_recepcion_int; ?>','<?php echo $row->num_oficio; ?>','<?php echo $row->asunto; ?>','<?php echo $row->tipo_recepcion; ?>','<?php echo $row->tipo_documento; ?>','<?php echo $row->emisor; ?>','<?php echo $row->cargo; ?>','<?php echo $row->dependencia; ?>','<?php 
-                              if($row->status == 'Informativo'){
+                             /* if($row->status == 'Informativo'){
                                 $this -> load -> model('Modelo_direccion');
                                 $query = $this->Modelo_direccion->getAllInformativosByNumOficio($row->num_oficio);
                                 foreach ($query as $key) {
                                  echo $arraydir[] =$key->direccion_destino;
                                }
                              }else{
-                              $this -> load -> model('Modelo_direccion');
+                             $this -> load -> model('Modelo_direccion');
                               $query = $this->Modelo_direccion->getAllsByNumOficio($row->num_oficio);
                               foreach ($query as $key) {
                                echo $arraydir[] =$key->direccion_destino;
                              }
-                           }
+                           }*/
+                           echo $row->direccion_donde_se_dirige;
+
                            ?>','<?php echo $row->fecha_termino; ?>','<?php echo $row->prioridad; ?>','<?php echo $is_informativo; ?>','<?php 
                              
-                              $this -> load -> model('Modelo_direccion');
-                              $query = $this->Modelo_direccion->getAllAsignacionesInternas($row->id_recepcion_int);
+                              /*$this -> load -> model('Modelo_direccion');
+                              $query = $this->Modelo_direccion->getAllAsignacionesInternas($row->id_recepcion_int);*/
                       
  
                            ?>','<?php echo $row->num_oficio_id; ?>','<?php echo $row->codigo_archivistico; ?>','<?php echo $row->valor_doc; ?>','<?php echo $row->vigencia_doc; ?>','<?php echo $row->tipo_doc_archivistico; ?>','<?php echo $row->clasificacion_info; ?>','<?php echo $row->tieneRespuesta; ?>','<?php echo addcslashes($row->observaciones,"\\\"\"\n\r"); ?>');" class="form-control btn btn-danger btn-sm">
@@ -590,11 +594,12 @@
                        <td>
                         <?php 
 
-                        $this -> load -> model('Modelo_direccion');
-                        $nombre_direccion = $this -> Modelo_direccion -> getBuzonDeCopiasDirById($row->id_recepcion_int);
+                       /* $this -> load -> model('Modelo_direccion');
+                       $nombre_direccion = $this -> Modelo_direccion -> getBuzonDeCopiasDirById($row->id_recepcion_int);
                         foreach ($nombre_direccion as $nombre) {
                           echo $nombre->nombre_direccion."\n\n";
-                        }
+                        }*/
+                        echo $row->copias_a_direcciones;
                         ?>
                       </td>
 
@@ -607,14 +612,14 @@
                      <td>
                       <?php 
 
-                      $this -> load -> model('Modelo_direccion');
+                      /*$this -> load -> model('Modelo_direccion');
                       $nombre_depto = $this -> Modelo_direccion -> getBuzonDeCopiasDeptoById($row->id_recepcion_int);
                       foreach ($nombre_depto as $nombre) {
 
                         echo $nombre->nombre_area."\n\n";
                         
-                      }
-
+                      }*/
+                      echo $row->copias_a_departamentos;
                       ?>
                     </td>
 

@@ -31,7 +31,7 @@ class RecepcionInterna extends CI_Controller {
 	{
 		if ($this->session->userdata('area_trabajo')) {
 			$data['titulo'] = 'Panel de Direcciones';
-			$data['entradas'] = $this -> Modelo_direccion -> getAllEntradasInternas('DIRECCIÓN GENERAL');
+			$data['entradas'] = $this -> Modelo_direccion -> getAllEntradasInternas_v2('DIRECCIÓN GENERAL');
 
 			$data['nums_memorandums']  = $this -> Modelo_direccion -> getNumsMemorandums('DIRECCIÓN GENERAL');
 			$data['nums_oficio']  = $this -> Modelo_direccion -> getNumsOficiosUsados('DIRECCIÓN GENERAL');
